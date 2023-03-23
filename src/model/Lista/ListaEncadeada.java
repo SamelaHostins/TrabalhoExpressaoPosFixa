@@ -8,30 +8,12 @@ public class ListaEncadeada<T> implements Lista<T> {
 	private NoLista<T> ultimo;
 	private int qtdElem;
 
-
-	public ListaEncadeada() {
-	}
-
-	public ListaEncadeada(T[] elements) {
-		for (int i=0;i<elements.length;i++) {
-			this.inserir(elements[i]);
-		}
-	}
-
 	public NoLista<T> getPrimeiro() {
 		return primeiro;
 	}
 
 	public void setPrimeiro(NoLista<T> primeiro) {
 		this.primeiro = primeiro;
-	}
-
-	public NoLista<T> getUltimo() {
-		return ultimo;
-	}
-
-	public void setUltimo(NoLista<T> ultimo) {
-		this.ultimo = ultimo;
 	}
 
 	@Override
@@ -87,7 +69,7 @@ public class ListaEncadeada<T> implements Lista<T> {
 			p = p.getProximo();
 		}
 
-		if (p != null) { // significa que encontrou o elemento a ser retirado
+		if (p != null) {
 			if (anterior == null) {
 				primeiro = p.getProximo();
 			} else {

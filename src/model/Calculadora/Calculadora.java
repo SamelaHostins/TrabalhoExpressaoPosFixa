@@ -88,11 +88,10 @@ public class Calculadora {
         }
     }
 
-    // metodo para calcular qd for pilha vetor não finalizado nem testado
-    public double calcularExpressaoVetor(String expressao) {
+    //metodo para calcular qd for pilha vetor não finalizado nem testado
+    public double calcularExpressao() {
         String[] expressaoPassada = new String[this.getExpressao().length()];
-        expressaoPassada = this.getExpressao().split(" ");
-        Pilha<Double> pilha = new PilhaVetor<Double>(30);
+        expressaoPassada = this.getExpressao().split("\\s+");
         double numero1, numero2;
         double resultado = 0.0;
         try {
@@ -104,10 +103,10 @@ public class Calculadora {
                     pilha.push(resultado); // retorna resultado
                 } else {
                     double numero = Double.parseDouble(digito); // precisa converter pois está como string
-                    pilha.push(numero); // retorna resultado
+                    this.pilha.push(numero); // retorna resultado
                 }
             }
-            return pilha.pop();
+            // return pilha.pop();
         } catch (Exception e) {
             System.out.println(
                     "Não foi possível realizar a operação. Por favor verifique a expressão e tente novamente.");
@@ -118,6 +117,36 @@ public class Calculadora {
         }
         return resultado;
     }
+
+    // public double comparaElementosExpressao() {
+    //             String[] arrayExpressao = this.getExpressao().split(" ");
+    //             double resultado = 0.0;
+    //             int i = 0;
+    //             while (i < arrayExpressao.length) {
+    //                 String elemento = arrayExpressao[i];
+    //                 i++;
+    //                 try {
+    //                     if (validarOperador(elemento)) {
+    //                         double valorDaDireita = pilha.pop();
+    //                         double valorDaEsquerda = pilha.pop();
+    //                         resultado = calcular(valorDaEsquerda, valorDaDireita, elemento);
+    //                         pilha.push(resultado);
+    //                     } else {
+    //                         double numero = Double.parseDouble(elemento);
+    //                         this.pilha.push(numero);
+    //                     }
+    //                 } catch (Exception e) {
+    //                     i = 0;
+    //                     System.out.println(
+    //                             "Não foi possível realizar a operação. Por favor verifique a expressão e tente novamente.");
+    //                     getExpressaoUsuario();
+    //                     arrayExpressao = new String[this.getExpressao().length()];
+    //                     arrayExpressao = this.getExpressao().split(" ");
+    //                     resultado = 0.0;
+    //                 }
+    //             }
+    //             return resultado;
+    //         }
 
     // metodo novo
     public boolean validarExpressao(String expressao) {
@@ -133,7 +162,6 @@ public class Calculadora {
                 qtdOperadores++;
             }
         }
-        System.out.println("qtdNumeros " + qtdNumeros + " qtdOperadores: " + qtdOperadores);
         if (qtdOperadores + 1 != qtdNumeros) {
             return false;
         }
@@ -141,48 +169,28 @@ public class Calculadora {
     }
 
     // metodo novo
+    // private boolean validarOperador(String digito) {
+    //     boolean operador = false;
+    //     if (digito.length() == 1
+    //             && (isOperador(digito))) {
+    //         operador = true;
+    //     }
+    //     return operador;
+    // }
+
+    // private boolean isOperador(String element) {
+    //     return new ListaEncadeada<>(new String[] { "-", "+", "/", "*" }).contains(element);
+    // }
+
     private boolean validarOperador(String digito) {
         boolean operador = false;
         if (digito.length() == 1
-                && (isOperador(digito))) {
+                && (digito.equals("+") || digito.equals("-") || digito.equals("/") || digito.equals("*"))) {
             operador = true;
         }
         return operador;
     }
 
-    public double comparaElementosExpressao() {
-        String[] arrayExpressao = this.getExpressao().split(" ");
-        double resultado = 0.0;
-        int i = 0;
-        while (i < arrayExpressao.length) {
-            String elemento = arrayExpressao[i];
-            i++;
-            try {
-                if (isOperador(elemento)) {
-                    double valorDaDireita = pilha.pop();
-                    double valorDaEsquerda = pilha.pop();
-                    resultado = calcular(valorDaEsquerda, valorDaDireita, elemento);
-                    pilha.push(resultado);
-                } else {
-                    double numero = Double.parseDouble(elemento);
-                    this.pilha.push(numero);
-                }
-            } catch (Exception e) {
-                i = 0;
-                System.out.println(
-                        "Não foi possível realizar a operação. Por favor verifique a expressão e tente novamente.");
-                getExpressaoUsuario();
-                arrayExpressao = new String[this.getExpressao().length()];
-                arrayExpressao = this.getExpressao().split(" ");
-                resultado = 0.0;
-            }
-        }
-        return resultado;
-    }
-
-    private boolean isOperador(String element) {
-        return new ListaEncadeada<>(new String[] { "-", "+", "/", "*" }).contains(element);
-    }
 
     public double calcular(double numero1, double numero2, String operador) {
         switch (operador) {
@@ -196,7 +204,6 @@ public class Calculadora {
                 if (numero2 == 0) {
                     System.out.println(
                             "Não é possível realizar divisão por zero. Por favor verifique a expressão e tente novamente.");
-                    getExpressaoUsuario();
                 }
                 return numero1 / numero2;
             default:
