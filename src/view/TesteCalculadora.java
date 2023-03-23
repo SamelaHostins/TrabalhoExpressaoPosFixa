@@ -19,8 +19,9 @@ public class TesteCalculadora
 		
 		// System.out.println("O resultado da sua expressão é: " + calculadora.comparaElementosExpressao());
 
-		calculadora.validarExpressao("1 2 - +");
-		calculadora.validarExpressao("1 2 3 /");
-		calculadora.validarExpressao("1 2 - 4 5 + *");
+		// calculadora.validarExpressao("1 2  - +");
+		calculadora.validarExpressao("1 0  - ");
+		// calculadora.validarExpressao("1 2 3 /");
+		// calculadora.validarExpressao("1 2 - 4 5 + *");
 	}
 }

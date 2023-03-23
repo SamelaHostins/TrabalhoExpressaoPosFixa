@@ -123,7 +123,7 @@ public class Calculadora {
     public boolean validarExpressao(String expressao) {
         int qtdNumeros = 0;
         int qtdOperadores = 0;
-        String[] expressaoPassada = expressao.split(" "); // cria um vetor dividindo pelo espaço
+        String[] expressaoPassada = expressao.split("\\s+"); // cria um vetor dividindo pelo espaço
         for (String digito : expressaoPassada) {
             if (digito.matches("\\d+")) {
                 qtdNumeros++;
