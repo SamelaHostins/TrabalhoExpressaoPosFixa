@@ -2,6 +2,7 @@ package model.Calculadora;
 
 import java.util.Scanner;
 
+import model.Lista.ListaEncadeada;
 import model.Pilha.Pilha;
 import model.Pilha.PilhaLista;
 import model.Pilha.PilhaVetor;
@@ -137,29 +138,29 @@ public class Calculadora {
         return true;
     }
 
-    // metodo novo
-    // private boolean validarOperador(String digito) {
-    // boolean operador = false;
-    // if (digito.length() == 1
-    // && (isOperador(digito))) {
-    // operador = true;
-    // }
-    // return operador;
-    // }
-
-    // private boolean isOperador(String element) {
-    // return new ListaEncadeada<>(new String[] { "-", "+", "/", "*"
-    // }).contains(element);
-    // }
-
+    //metodo novo
     private boolean validarOperador(String digito) {
-        boolean operador = false;
-        if (digito.length() == 1
-                && (digito.equals("+") || digito.equals("-") || digito.equals("/") || digito.equals("*"))) {
-            operador = true;
-        }
-        return operador;
+    boolean operador = false;
+    if (digito.length() == 1
+    && (isOperador(digito))) {
+    operador = true;
     }
+    return operador;
+    }
+
+    private boolean isOperador(String element) {
+    return new ListaEncadeada<>(new String[] { "-", "+", "/", "*"
+    }).contains(element);
+    }
+
+    // private boolean validarOperador(String digito) {
+    //     boolean operador = false;
+    //     if (digito.length() == 1
+    //             && (digito.equals("+") || digito.equals("-") || digito.equals("/") || digito.equals("*"))) {
+    //         operador = true;
+    //     }
+    //     return operador;
+    // }
 
     public double calcular(double numero1, double numero2, String operador) {
         switch (operador) {
