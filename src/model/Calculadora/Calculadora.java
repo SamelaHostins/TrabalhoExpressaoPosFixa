@@ -1,11 +1,11 @@
 package model.Calculadora;
 
-import java.util.Scanner;
-import java.util.concurrent.locks.ReadWriteLock;
-
+import model.Lista.ListaEncadeada;
 import model.Pilha.Pilha;
 import model.Pilha.PilhaLista;
 import model.Pilha.PilhaVetor;
+
+import java.util.Scanner;
 
 public class Calculadora {
 
@@ -62,10 +62,10 @@ public class Calculadora {
     public void criaTipoPilha() {
         switch (respostaUsuario.toUpperCase()) {
             case "V":
-                this.setPilha(new PilhaVetor<Double>(expressao.length()));
+                this.setPilha(new PilhaVetor<>(expressao.length()));
                 break;
             case "D":
-                this.setPilha(new PilhaLista<Double>());
+                this.setPilha(new PilhaLista<>());
                 break;
             default:
                 System.out.println("Não foi possível criar a pilha.");
@@ -76,15 +76,15 @@ public class Calculadora {
         boolean expressaoValida = false;
 
         while (!expressaoValida) {
-        System.out.println("Digite a expressão aritmétrica: ");
-        String expressaoUsuario = teclado.nextLine();
+            System.out.println("Digite a expressão aritmétrica: ");
+            String expressaoUsuario = teclado.nextLine();
 
-        if (this.validarExpressao(expressaoUsuario)) {
-        expressaoValida = true;
-        this.setExpressao(expressaoUsuario);
-        } else {
-        System.out.println("Expressão inválida.");
-        }
+            if (this.validarExpressao(expressaoUsuario)) {
+                expressaoValida = true;
+                this.setExpressao(expressaoUsuario);
+            } else {
+                System.out.println("Expressão inválida.");
+            }
         }
     }
 
@@ -115,7 +115,7 @@ public class Calculadora {
             expressaoPassada = new String[this.getExpressao().length()];
             expressaoPassada = this.getExpressao().split(" ");
             resultado = 0.0;
-        }    
+        }
         return resultado;
     }
 
@@ -140,46 +140,49 @@ public class Calculadora {
         return true;
     }
 
-    //metodo novo
+    // metodo novo
     private boolean validarOperador(String digito) {
         boolean operador = false;
         if (digito.length() == 1
-                && (digito.equals("+") || digito.equals("-") || digito.equals("/") || digito.equals("*"))) {
+                && (isOperador(digito))) {
             operador = true;
         }
         return operador;
     }
 
-    // public double comparaElementosExpressao() {
-    //     String[] arrayExpressao = new String[this.getExpressao().length()];
-    //     arrayExpressao = this.getExpressao().split(" ");
-    //     double resultado = 0.0;
-    //     int i = 0;
-    //     while (i < arrayExpressao.length) {
-    //         String elemento = arrayExpressao[i];
-    //         i++;
-    //         try {
-    //             if (elemento.equals("+") || elemento.equals("/") || elemento.equals("-") || elemento.equals("*")) {
-    //                 double valorDaDireita = pilha.pop();
-    //                 double valorDaEsquerda = pilha.pop();
-    //                 resultado = calculo(valorDaEsquerda, valorDaDireita, elemento);
-    //                 pilha.push(resultado);
-    //             } else {
-    //                 double numero = Double.parseDouble(elemento);
-    //                 this.pilha.push(numero);
-    //             }
-    //         } catch (Exception e) {
-    //             i = 0;
-    //             System.out.println(
-    //                     "Não foi possível realizar a operação. Por favor verifique a express�o e tente novamente.");
-    //             getExpressaoUsuario();
-    //             arrayExpressao = new String[this.getExpressao().length()];
-    //             arrayExpressao = this.getExpressao().split(" ");
-    //             resultado = 0.0;
-    //         }
-    //     }
-    //     return resultado;
-    // }
+    public double comparaElementosExpressao() {
+        String[] arrayExpressao = this.getExpressao().split(" ");
+        double resultado = 0.0;
+        int i = 0;
+        while (i < arrayExpressao.length) {
+            String elemento = arrayExpressao[i];
+            i++;
+            try {
+                if (isOperador(elemento)) {
+                    double valorDaDireita = pilha.pop();
+                    double valorDaEsquerda = pilha.pop();
+                    resultado = calcular(valorDaEsquerda, valorDaDireita, elemento);
+                    pilha.push(resultado);
+                } else {
+                    double numero = Double.parseDouble(elemento);
+                    this.pilha.push(numero);
+                }
+            } catch (Exception e) {
+                i = 0;
+                System.out.println(
+                        "Não foi possível realizar a operação. Por favor verifique a expressão e tente novamente.");
+                getExpressaoUsuario();
+                arrayExpressao = new String[this.getExpressao().length()];
+                arrayExpressao = this.getExpressao().split(" ");
+                resultado = 0.0;
+            }
+        }
+        return resultado;
+    }
+
+    private boolean isOperador(String element) {
+        return new ListaEncadeada<>(new String[] { "-", "+", "/", "*" }).contains(element);
+    }
 
     public double calcular(double numero1, double numero2, String operador) {
         switch (operador) {
@@ -201,17 +204,18 @@ public class Calculadora {
         }
     }
 
-    // public double calculo(double resultado1, double resultado2, String operador) {
-    //     if (operador.equals("/")) {
-    //         return resultado1 / resultado2;
-    //     } else if (operador.equals("*")) {
-    //         return resultado1 * resultado2;
-    //     } else if (operador.equals("-")) {
-    //         return resultado1 - resultado2;
-    //     } else if (operador.equals("+")) {
-    //         return resultado1 + resultado2;
-    //     } else {
-    //         return 0.0;
-    //     }
+    // public double calculo(double resultado1, double resultado2, String operador)
+    // {
+    // if (operador.equals("/")) {
+    // return resultado1 / resultado2;
+    // } else if (operador.equals("*")) {
+    // return resultado1 * resultado2;
+    // } else if (operador.equals("-")) {
+    // return resultado1 - resultado2;
+    // } else if (operador.equals("+")) {
+    // return resultado1 + resultado2;
+    // } else {
+    // return 0.0;
+    // }
     // }
 }

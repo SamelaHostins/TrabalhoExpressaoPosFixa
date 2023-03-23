@@ -1,10 +1,22 @@
 package model.Lista;
 
+import java.util.Objects;
+
 public class ListaEncadeada<T> implements Lista<T> {
 
 	private NoLista<T> primeiro;
 	private NoLista<T> ultimo;
 	private int qtdElem;
+
+
+	public ListaEncadeada() {
+	}
+
+	public ListaEncadeada(T[] elements) {
+		for (int i=0;i<elements.length;i++) {
+			this.inserir(elements[i]);
+		}
+	}
 
 	public NoLista<T> getPrimeiro() {
 		return primeiro;
@@ -155,21 +167,14 @@ public class ListaEncadeada<T> implements Lista<T> {
 		return no.getInfo();
 	}
 
-	public T pegar2(int posicao) {
-		if (posicao < 0 || posicao >= this.qtdElem) {
-			throw new IndexOutOfBoundsException("Posicao=" + posicao + "; Tamanho=" + qtdElem);
-		}
-
-		NoLista<T> p = primeiro;
-		int pos = 0;
-		while (p != null) {
-			if (pos == posicao) {
-				return p.getInfo();
+	public boolean contains(T element) {
+		NoLista<T> no = getPrimeiro();
+		while (Objects.nonNull(no)) {
+			if (no.getInfo().equals(element)) {
+				return true;
 			}
-			pos++;
-			p = p.getProximo();
+			no = no.getProximo();
 		}
-		return null; // não chega aqui
+		return false;
 	}
-
 }
