@@ -7,6 +7,14 @@ public class ListaEncadeada<T> implements Lista<T> {
 	private NoLista<T> primeiro;
 	private NoLista<T> ultimo;
 	private int qtdElem;
+	
+	public NoLista<T> getUltimo() {
+		return ultimo;
+	}
+
+	public int getQtdElem() {
+		return qtdElem;
+	}
 
 	public NoLista<T> getPrimeiro() {
 		return primeiro;
@@ -30,6 +38,20 @@ public class ListaEncadeada<T> implements Lista<T> {
 		ultimo = novo;
 		qtdElem++;
 	}
+
+	// public int ultimoIndiceDe(T x) {
+	// 	int posicao = this.getTamanho() - 1;
+	// 	NoLista<T> p = ultimo;
+
+	// 	while (p != null) {
+	// 		if (p.getInfo().equals(x)) {
+	// 			return posicao;
+	// 		}
+	// 		posicao--;
+	// 		p = p.getAnterior();
+	// 	}
+	// 	return -1;
+	// }
 
 	@Override
 	public String exibir() {

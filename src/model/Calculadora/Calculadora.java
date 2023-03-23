@@ -1,11 +1,10 @@
 package model.Calculadora;
 
-import model.Lista.ListaEncadeada;
+import java.util.Scanner;
+
 import model.Pilha.Pilha;
 import model.Pilha.PilhaLista;
 import model.Pilha.PilhaVetor;
-
-import java.util.Scanner;
 
 public class Calculadora {
 
@@ -88,7 +87,7 @@ public class Calculadora {
         }
     }
 
-    //metodo para calcular qd for pilha vetor não finalizado nem testado
+    // metodo para calcular qd for pilha vetor não finalizado nem testado
     public double calcularExpressao() {
         String[] expressaoPassada = new String[this.getExpressao().length()];
         expressaoPassada = this.getExpressao().split("\\s+");
@@ -118,36 +117,6 @@ public class Calculadora {
         return resultado;
     }
 
-    // public double comparaElementosExpressao() {
-    //             String[] arrayExpressao = this.getExpressao().split(" ");
-    //             double resultado = 0.0;
-    //             int i = 0;
-    //             while (i < arrayExpressao.length) {
-    //                 String elemento = arrayExpressao[i];
-    //                 i++;
-    //                 try {
-    //                     if (validarOperador(elemento)) {
-    //                         double valorDaDireita = pilha.pop();
-    //                         double valorDaEsquerda = pilha.pop();
-    //                         resultado = calcular(valorDaEsquerda, valorDaDireita, elemento);
-    //                         pilha.push(resultado);
-    //                     } else {
-    //                         double numero = Double.parseDouble(elemento);
-    //                         this.pilha.push(numero);
-    //                     }
-    //                 } catch (Exception e) {
-    //                     i = 0;
-    //                     System.out.println(
-    //                             "Não foi possível realizar a operação. Por favor verifique a expressão e tente novamente.");
-    //                     getExpressaoUsuario();
-    //                     arrayExpressao = new String[this.getExpressao().length()];
-    //                     arrayExpressao = this.getExpressao().split(" ");
-    //                     resultado = 0.0;
-    //                 }
-    //             }
-    //             return resultado;
-    //         }
-
     // metodo novo
     public boolean validarExpressao(String expressao) {
         int qtdNumeros = 0;
@@ -170,16 +139,17 @@ public class Calculadora {
 
     // metodo novo
     // private boolean validarOperador(String digito) {
-    //     boolean operador = false;
-    //     if (digito.length() == 1
-    //             && (isOperador(digito))) {
-    //         operador = true;
-    //     }
-    //     return operador;
+    // boolean operador = false;
+    // if (digito.length() == 1
+    // && (isOperador(digito))) {
+    // operador = true;
+    // }
+    // return operador;
     // }
 
     // private boolean isOperador(String element) {
-    //     return new ListaEncadeada<>(new String[] { "-", "+", "/", "*" }).contains(element);
+    // return new ListaEncadeada<>(new String[] { "-", "+", "/", "*"
+    // }).contains(element);
     // }
 
     private boolean validarOperador(String digito) {
@@ -190,7 +160,6 @@ public class Calculadora {
         }
         return operador;
     }
-
 
     public double calcular(double numero1, double numero2, String operador) {
         switch (operador) {

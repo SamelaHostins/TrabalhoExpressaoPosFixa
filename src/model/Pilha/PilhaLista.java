@@ -1,53 +1,52 @@
 package model.Pilha;
 
-import model.Lista.NoLista;
+import model.Lista.ListaEncadeada;
 
 public class PilhaLista<T> implements Pilha<T> {
 
-	private NoLista<T> topo;
+	private ListaEncadeada<T> lista;
 
-	@Override
-	public void push(T v) {
-		NoLista<T> novo = new NoLista<>();
-		novo.setInfo(v);
-		novo.setProximo(this.topo);
-		this.topo = novo;
+	public PilhaLista() {
+		this.lista = new ListaEncadeada<T>();
 	}
 
 	@Override
 	public T pop() {
-		T elemento = this.peek();
-		this.topo = this.topo.getProximo();
-		return elemento;
+		T valor;
+		valor = this.peek();
+		this.lista.retirar(valor);
+		return valor;
 	}
 
 	@Override
 	public T peek() {
-		if (estaVazia()) {
+
+		if (this.estaVazia()) {
 			throw new RuntimeException("Pilha vazia.");
 		}
-		return this.topo.getInfo();
+		return this.lista.getUltimo().getInfo();
 	}
 
 	@Override
 	public boolean estaVazia() {
-		return (this.topo == null);
+		return lista.estaVazia();
 	}
 
 	@Override
 	public void liberar() {
-		this.topo = null;
+		this.lista = new ListaEncadeada<T>();
 	}
 
 	@Override
-	public String toString() {
-		String elementos = "";
+	public void push(T valor) {
+		this.lista.inserir(valor);
+	}
 
-		NoLista<T> t = this.topo;
-		while (t != null) {
-			elementos += t.getInfo() + ", ";
-		}
-		elementos = elementos.substring(0, Math.max(0, elementos.length() - 2));
-		return "topo[" + elementos + "]base";
+	public String toString2() {
+		return this.lista.exibir();
+	}
+
+	public int getTamanho() {
+		return this.lista.getTamanho();
 	}
 }
