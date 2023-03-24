@@ -139,28 +139,28 @@ public class Calculadora {
     }
 
     //metodo novo
-    private boolean validarOperador(String digito) {
-    boolean operador = false;
-    if (digito.length() == 1
-    && (isOperador(digito))) {
-    operador = true;
-    }
-    return operador;
-    }
-
-    private boolean isOperador(String element) {
-    return new ListaEncadeada<>(new String[] { "-", "+", "/", "*"
-    }).contains(element);
-    }
-
     // private boolean validarOperador(String digito) {
-    //     boolean operador = false;
-    //     if (digito.length() == 1
-    //             && (digito.equals("+") || digito.equals("-") || digito.equals("/") || digito.equals("*"))) {
-    //         operador = true;
-    //     }
-    //     return operador;
+    // boolean operador = false;
+    // if (digito.length() == 1
+    // && (isOperador(digito))) {
+    // operador = true;
     // }
+    // return operador;
+    // }
+
+    // private boolean isOperador(String element) {
+    // return new ListaEncadeada<>(new String[] { "-", "+", "/", "*"
+    // }).contains(element);
+    // }
+
+    private boolean validarOperador(String digito) {
+        boolean operador = false;
+        if (digito.length() == 1
+                && (digito.equals("+") || digito.equals("-") || digito.equals("/") || digito.equals("*"))) {
+            operador = true;
+        }
+        return operador;
+    }
 
     public double calcular(double numero1, double numero2, String operador) {
         switch (operador) {
@@ -180,19 +180,4 @@ public class Calculadora {
                 return 0.0;
         }
     }
-
-    // public double calculo(double resultado1, double resultado2, String operador)
-    // {
-    // if (operador.equals("/")) {
-    // return resultado1 / resultado2;
-    // } else if (operador.equals("*")) {
-    // return resultado1 * resultado2;
-    // } else if (operador.equals("-")) {
-    // return resultado1 - resultado2;
-    // } else if (operador.equals("+")) {
-    // return resultado1 + resultado2;
-    // } else {
-    // return 0.0;
-    // }
-    // }
 }
