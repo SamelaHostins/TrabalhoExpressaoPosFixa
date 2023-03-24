@@ -2,7 +2,6 @@ package model.Calculadora;
 
 import java.util.Scanner;
 
-import model.Lista.ListaEncadeada;
 import model.Pilha.Pilha;
 import model.Pilha.PilhaLista;
 import model.Pilha.PilhaVetor;
@@ -124,7 +123,7 @@ public class Calculadora {
         int qtdOperadores = 0;
         String[] expressaoPassada = expressao.split("\\s+"); // cria um vetor dividindo pelo espaço
         for (String digito : expressaoPassada) {
-            if (digito.matches("\\d+")) {
+            if (digito.matches("\\d+(\\.\\d+)?")) {
                 qtdNumeros++;
             } else if (digito.matches("[a-zA-Z]+")) {
                 return false;
@@ -138,7 +137,7 @@ public class Calculadora {
         return true;
     }
 
-    //metodo novo
+    // metodo novo
     // private boolean validarOperador(String digito) {
     // boolean operador = false;
     // if (digito.length() == 1
