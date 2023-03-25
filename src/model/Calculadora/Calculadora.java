@@ -121,15 +121,21 @@ public class Calculadora {
     public boolean validarExpressao(String expressao) {
         int qtdNumeros = 0;
         int qtdOperadores = 0;
+        String digitoAnterior = "";
         String[] expressaoPassada = expressao.split("\\s+"); // cria um vetor dividindo pelo espaço
         for (String digito : expressaoPassada) {
-            if (digito.matches("\\d+(\\.\\d+)?")) {
+            if (digito.matches("[-+]?\\d+[[.]?\\d+]*")) {  // Regex verifica numero positivo, negativo, double (com 1 '.')
                 qtdNumeros++;
             } else if (digito.matches("[a-zA-Z]+")) {
                 return false;
             } else {
+                if (digito.equals("/") && digitoAnterior.equals("0")) {  // Valida se na expressao tem divisao por 0
+                    System.out.println("Incapaz de realizar divisão por 0!");
+                    return false;
+                }
                 qtdOperadores++;
             }
+            	= digito;
         }
         if (qtdOperadores + 1 != qtdNumeros) {
             return false;
