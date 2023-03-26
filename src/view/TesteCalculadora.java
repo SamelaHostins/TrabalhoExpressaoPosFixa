@@ -9,19 +9,17 @@ public class TesteCalculadora
 	{
 	  Calculadora calculadora = new Calculadora();
 
-	// 	calculadora.getTipoPilha();
+		calculadora.getTipoPilha();
 	
-	// 	calculadora.getExpressaoUsuario();
+		calculadora.getExpressaoUsuario();
+		System.out.println("");
 		
-	// 	System.out.println("Criando pilha!");
-	// 	System.out.println("");
+		System.out.println("Criando pilha!");
+		System.out.println("");
 		
-	// 	calculadora.criaTipoPilha();
+		calculadora.criaTipoPilha();
 		
-	// 	System.out.println("O resultado da sua expressão é: " + calculadora.calcularExpressao());
+		System.out.println("O resultado da sua expressão é: " + calculadora.calcularExpressao());
 
-		calculadora.validarExpressao("3 1.5 /");
-		// calculadora.validarExpressao("1 2 3 /");
-		// calculadora.validarExpressao("1 2 - 4 5 + *");
 	}
 }

@@ -124,18 +124,20 @@ public class Calculadora {
         String digitoAnterior = "";
         String[] expressaoPassada = expressao.split("\\s+"); // cria um vetor dividindo pelo espaço
         for (String digito : expressaoPassada) {
-            if (digito.matches("[-+]?\\d+[[.]?\\d+]*")) {  // Regex verifica numero positivo, negativo, double (com 1 '.')
+            // Regex verifica numero positivo, negativo, double (com 1 '.')
+            if (digito.matches("[-+]?\\d+[[.]?\\d+]*")) { 
+                digitoAnterior = digito;
                 qtdNumeros++;
             } else if (digito.matches("[a-zA-Z]+")) {
                 return false;
             } else {
-                if (digito.equals("/") && digitoAnterior.equals("0")) {  // Valida se na expressao tem divisao por 0
+                // Valida se na expressao tem divisao por 0
+                if (digito.equals("/") && digitoAnterior.equals("0")) {  
                     System.out.println("Incapaz de realizar divisão por 0!");
                     return false;
                 }
                 qtdOperadores++;
             }
-            	= digito;
         }
         if (qtdOperadores + 1 != qtdNumeros) {
             return false;
@@ -176,10 +178,6 @@ public class Calculadora {
             case "*":
                 return numero1 * numero2;
             case "/":
-                if (numero2 == 0) {
-                    System.out.println(
-                            "Não é possível realizar divisão por zero. Por favor verifique a expressão e tente novamente.");
-                }
                 return numero1 / numero2;
             default:
                 return 0.0;
