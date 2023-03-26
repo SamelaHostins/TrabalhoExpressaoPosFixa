@@ -32,7 +32,7 @@ public class TesteListaDinamica {
         System.out.println("Lista ap�s inser��o = " + lista.exibir());
         System.out.println("Tamanho = " + lista.getTamanho());
         System.out.println("Pegar pela posi��o 2 = " + lista.pegar(2));
-        // System.out.println("Pegar pela posi��o 20 = "+lista.pegar(20));
+        // System.out.println("Pegar pela posição 20 = "+lista.pegar(20));
 
         Lista<Integer> lista1 = new ListaEncadeada<>();
         lista1.inserir(50);

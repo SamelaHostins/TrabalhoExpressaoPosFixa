@@ -71,6 +71,7 @@ public class Calculadora {
         }
     }
 
+    // Contribuição Gabriel
     public void getExpressaoUsuario() {
         boolean expressaoValida = false;
 
@@ -87,42 +88,32 @@ public class Calculadora {
         }
     }
 
-    // metodo para calcular qd for pilha vetor não finalizado nem testado
+    // Contribuição Samy
     public double calcularExpressao() {
         String[] expressaoPassada = new String[this.getExpressao().length()];
         expressaoPassada = this.getExpressao().split("\\s+");
         double numero1, numero2;
         double resultado = 0.0;
-        try {
             for (String digito : expressaoPassada) {
                 if (validarOperador(digito)) {
-                    numero2 = pilha.pop(); // precisa retirar do final para o inicio
-                    numero1 = pilha.pop();
+                    numero2 = pilha.pop(); 
+                    numero1 = pilha.pop(); 
                     resultado = calcular(numero1, numero2, digito);
-                    pilha.push(resultado); // retorna resultado
+                    pilha.push(resultado); 
                 } else {
                     double numero = Double.parseDouble(digito); // precisa converter pois está como string
-                    this.pilha.push(numero); // retorna resultado
+                    this.pilha.push(numero); 
                 }
             }
-            // return pilha.pop();
-        } catch (Exception e) {
-            System.out.println(
-                    "Não foi possível realizar a operação. Por favor verifique a expressão e tente novamente.");
-            getExpressaoUsuario();
-            expressaoPassada = new String[this.getExpressao().length()];
-            expressaoPassada = this.getExpressao().split(" ");
-            resultado = 0.0;
-        }
         return resultado;
     }
 
-    // metodo novo
+    // Contribuição Gabriel
     public boolean validarExpressao(String expressao) {
         int qtdNumeros = 0;
         int qtdOperadores = 0;
         String digitoAnterior = "";
-        String[] expressaoPassada = expressao.split("\\s+"); // cria um vetor dividindo pelo espaço
+        String[] expressaoPassada = expressao.split("\\s+"); 
         for (String digito : expressaoPassada) {
             // Regex verifica numero positivo, negativo, double (com 1 '.')
             if (digito.matches("[-+]?\\d+[[.]?\\d+]*")) { 
@@ -145,21 +136,7 @@ public class Calculadora {
         return true;
     }
 
-    // metodo novo
-    // private boolean validarOperador(String digito) {
-    // boolean operador = false;
-    // if (digito.length() == 1
-    // && (isOperador(digito))) {
-    // operador = true;
-    // }
-    // return operador;
-    // }
-
-    // private boolean isOperador(String element) {
-    // return new ListaEncadeada<>(new String[] { "-", "+", "/", "*"
-    // }).contains(element);
-    // }
-
+    // Contribuição Samy
     private boolean validarOperador(String digito) {
         boolean operador = false;
         if (digito.length() == 1
@@ -169,6 +146,7 @@ public class Calculadora {
         return operador;
     }
 
+    // Contribuição Samy
     public double calcular(double numero1, double numero2, String operador) {
         switch (operador) {
             case "+":

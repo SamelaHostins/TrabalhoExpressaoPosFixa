@@ -49,20 +49,6 @@ public class ListaEncadeada<T> implements Lista<T> {
 		qtdElem++;
 	}
 
-	// public int ultimoIndiceDe(T x) {
-	// 	int posicao = this.getTamanho() - 1;
-	// 	NoLista<T> p = ultimo;
-
-	// 	while (p != null) {
-	// 		if (p.getInfo().equals(x)) {
-	// 			return posicao;
-	// 		}
-	// 		posicao--;
-	// 		p = p.getAnterior();
-	// 	}
-	// 	return -1;
-	// }
-
 	@Override
 	public String exibir() {
 		NoLista<T> p = primeiro;
