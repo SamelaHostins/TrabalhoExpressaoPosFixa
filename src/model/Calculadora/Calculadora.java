@@ -91,7 +91,7 @@ public class Calculadora {
     // Contribuição Samy
     public double calcularExpressao() {
         String[] expressaoPassada = new String[this.getExpressao().length()];
-        expressaoPassada = this.getExpressao().split("\\s+");
+        expressaoPassada = this.getExpressao().trim().split("\\s+");
         double numero1, numero2;
         double resultado = 0.0;
             for (String digito : expressaoPassada) {
@@ -113,7 +113,7 @@ public class Calculadora {
         int qtdNumeros = 0;
         int qtdOperadores = 0;
         String digitoAnterior = "";
-        String[] expressaoPassada = expressao.split("\\s+"); 
+        String[] expressaoPassada = expressao.trim().split("\\s+"); 
         for (String digito : expressaoPassada) {
             // Regex verifica numero positivo, negativo, double (com 1 '.')
             if (digito.matches("[-+]?\\d+[[.]?\\d+]*")) { 
