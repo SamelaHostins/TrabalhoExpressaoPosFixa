@@ -62,6 +62,65 @@ public class ListaEncadeada<T> implements Lista<T> {
 		return resultado + "]";
 	}
 
+	public int ultimoIndiceDe(T x)
+	{
+		/** retornar indice do ultimo no que armazena um valor igual x 
+		* ou seja, ao encontrar um valor igual, assume que aquele é o último nó, 
+		* e guarda a posicao em uma variável
+		* garantir que ele percorra tudo (while p!= null)
+		* primeiro nó = 0, se não encontrar = -1
+		*/
+		NoLista<T> no = this.primeiro;
+		
+		int posicaoNoLista = 0;
+		// ja começa com -1 pois se n achar nada não é alterado então permananece "Não encontrado"
+		int indice = -1; 
+		
+		while (no != null)
+		{
+			if (no.getInfo().equals(x)) // se um objeto for igual ao outro
+			{
+				// atualiza a variável indice para a posição que está contando agora
+				indice = posicaoNoLista;
+			}
+			posicaoNoLista++;
+			no = no.getProximo();
+		}
+		// se saiu do loop, é pq chegou ao fim da lista
+		return indice;
+	}
+	
+	public ListaEncadeada<T> intercala(ListaEncadeada<T> outra)
+	{
+		// criar uma nova lista encadeada intercalando duas outras
+		ListaEncadeada<T> novaLista = new ListaEncadeada<T>();
+
+		NoLista<T> noListaClasse = this.primeiro;
+		NoLista<T> noListaOutra = outra.getPrimeiro();
+		
+		while (noListaClasse != null && noListaOutra != null)
+		{
+			novaLista.inserir(noListaClasse.getInfo());
+			noListaClasse = noListaClasse.getProximo();
+
+			novaLista.inserir(noListaOutra.getInfo());
+			noListaOutra = noListaOutra.getProximo();
+		}
+		
+		while (noListaClasse != null)
+		{
+			novaLista.inserir(noListaClasse.getInfo());
+			noListaClasse = noListaClasse.getProximo();
+		}
+		
+		while (noListaOutra != null)
+		{
+			novaLista.inserir(noListaOutra.getInfo());
+			noListaOutra = noListaOutra.getProximo();
+		}
+		return novaLista;
+	}
+
 	@Override
 	public int buscar(T valor) {
 		int posicao = 0;
