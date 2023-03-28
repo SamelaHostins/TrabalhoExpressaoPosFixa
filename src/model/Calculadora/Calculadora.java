@@ -1,10 +1,10 @@
-package model.Calculadora;
+package model.calculadora;
 
 import java.util.Scanner;
 
-import model.Pilha.Pilha;
-import model.Pilha.PilhaLista;
-import model.Pilha.PilhaVetor;
+import model.pilhas.Pilha;
+import model.pilhas.PilhaLista;
+import model.pilhas.PilhaVetor;
 
 public class Calculadora {
 

@@ -1,4 +1,4 @@
-package model.Lista;
+package model.listas;
 
 import java.util.Objects;
 

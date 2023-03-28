@@ -1,4 +1,4 @@
-package model.Lista;
+package model.listas;
 
 public interface Lista<T> {
 

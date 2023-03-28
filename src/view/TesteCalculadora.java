@@ -1,6 +1,6 @@
 package view;
 
-import model.Calculadora.Calculadora;
+import model.calculadora.Calculadora;
 
 public class TesteCalculadora 
 {

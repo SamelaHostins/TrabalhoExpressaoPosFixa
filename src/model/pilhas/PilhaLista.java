@@ -1,6 +1,6 @@
-package model.Pilha;
+package model.pilhas;
 
-import model.Lista.ListaEncadeada;
+import model.listas.ListaEncadeada;
 
 public class PilhaLista<T> implements Pilha<T> {
 

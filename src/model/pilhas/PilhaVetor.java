@@ -1,4 +1,4 @@
-package model.Pilha;
+package model.pilhas;
 
 public class PilhaVetor<T> implements Pilha<T> {
 

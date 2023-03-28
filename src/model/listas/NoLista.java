@@ -1,4 +1,4 @@
-package model.Lista;
+package model.listas;
 
 public class NoLista<T> {
 

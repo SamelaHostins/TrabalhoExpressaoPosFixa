@@ -1,4 +1,4 @@
-package model.Pilha;
+package model.pilhas;
 
 public interface Pilha<T> {
 	void push(T v);
