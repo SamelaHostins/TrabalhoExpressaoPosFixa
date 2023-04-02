@@ -33,7 +33,7 @@ public class TesteLista {
 
 		System.out.println("Lista: " + lista2.exibir());
 		System.out.println("Lista: " + lista3.exibir());
-		System.out.println("Lista intercalada: "+ lista2.intercalaSamy(lista3).exibir());
+		System.out.println("Lista intercalada: "+ lista2.intercala(lista3).exibir());
 		// System.out.println("Lista: " + lista2.copiar().exibir());
 		System.out.println(" O último índice do M deve ser 4: " +
 				lista1.ultimoIndiceDe("M"));
