@@ -22,6 +22,17 @@ public class FilaVetor<T> implements Fila<T> {
 		return this.limite;
 	}
 
+	@Override
+	public void inserir(T valor) {
+		if (this.tamanho == this.limite) {
+			throw new RuntimeException("Fila está cheia");
+		} else {
+			int proximo = (this.inicio + this.tamanho) % this.limite;
+			this.info[proximo] = valor;
+			this.tamanho += 1;
+		}
+	}
+
 
 	public FilaVetor<T> concatenar(FilaVetor<T> outra) {
 		FilaVetor<T> novaFila = new FilaVetor<T>(this.getLimite() + outra.getLimite());
@@ -40,16 +51,6 @@ public class FilaVetor<T> implements Fila<T> {
         return this.info[(indice + this.inicio) % limite];
     }
 	
-	@Override
-	public void inserir(T valor) {
-		if (this.tamanho == this.limite) {
-			throw new RuntimeException("Fila est� cheia");
-		} else {
-			int proximo = (this.inicio + this.tamanho) % this.limite;
-			this.info[proximo] = valor;
-			this.tamanho += 1;
-		}
-	}
 
 	@Override
 	public T retirar() {
@@ -63,7 +64,7 @@ public class FilaVetor<T> implements Fila<T> {
 	@Override
 	public T peek() {
 		if (estaVazio()) {
-			throw new RuntimeException("Fila est� vazia");
+			throw new RuntimeException("Fila está vazia");
 		}
 		return this.info[this.inicio];
 	}
