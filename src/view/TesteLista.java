@@ -23,20 +23,24 @@ public class TesteLista {
 		lista2.inserir("M"); // 2
 		lista2.inserir("Y"); // 3
 
-		ListaEncadeada<String> lista3 = new ListaEncadeada<String>();
-		lista3.inserir("L"); // 0
-		lista3.inserir("U"); // 1
-		lista3.inserir("N"); // 2
+		ListaEncadeada<Integer> lista3 = new ListaEncadeada<Integer>();
+		lista3.inserir(1); // 0
+		lista3.inserir(2); // 1
+		lista3.inserir(3); // 2
 
 		// lista2.inserir("F"); // 2
 		// lista2.inserir("H"); // 2
 
-		System.out.println("Lista: " + lista2.exibir());
-		System.out.println("Lista: " + lista3.exibir());
-		System.out.println("Lista intercalada: "+ lista2.intercala(lista3).exibir());
-		// System.out.println("Lista: " + lista2.copiar().exibir());
-		System.out.println(" O último índice do M deve ser 4: " +
-				lista1.ultimoIndiceDe("M"));
+		// System.out.println("Lista: " + lista2.exibir());
+		// System.out.println("Lista: " + lista3.exibir());
+		// System.out.println("Lista intercalada: "+ lista2.intercala(lista3).exibir());
+		// System.out.println("Lista: " + lista2.getTamanho());
+		// System.out.println("Lista: " + lista2.exibir());
+		System.out.println("Maior valor: " + lista3.encontrarMaior());
+		// System.out.println("Anterior de Y: " + lista2.buscar("Y"));
+		// System.out.println("Lista ao contrário: " + lista2.exibirAoContrario());
+		// System.out.println(" O último índice do M deve ser 4: " +
+		// 		lista1.ultimoIndiceDe("M"));
 		// System.out.println(" O último índice do P deve ser 8: " +
 		// lista1.ultimoIndiceDe("P"));
 		// System.out.println(" O último índice do K deve ser -1: " +

@@ -1,12 +1,14 @@
 package model.listas;
 
+import java.util.Comparator;
 import java.util.Objects;
 
-public class ListaEncadeada<T> implements Lista<T> {
+public class ListaEncadeada<T> implements Lista<T>, Comparator<Integer> {
 
 	private NoLista<T> primeiro;
 	private NoLista<T> ultimo;
 	private int qtdElem;
+	Comparator<T> comparator;
 
 	public ListaEncadeada(T[] elements) {
 		for (int i = 0; i < elements.length; i++) {
@@ -54,11 +56,43 @@ public class ListaEncadeada<T> implements Lista<T> {
 		String resultado = "[";
 
 		while (p != null) {
-			resultado += p.getInfo() + ", ";
+			resultado += p.getInfo();
+			if (p.getProximo() != null) {
+				resultado += ", ";
+			}
 			p = p.getProximo();
 		}
 
 		return resultado + "]";
+	}
+
+	@Override
+	public String exibirAoContrario() {
+		NoLista<T> p = primeiro;
+		String resultado = "]";
+
+		while (p != null) {
+			if (p == primeiro) {
+				resultado = p.getInfo() + resultado;
+			} else {
+				resultado = p.getInfo() + ", " + resultado;
+			}
+			p = p.getProximo();
+		}
+		return "[" + resultado;
+	}
+
+	@Override
+	public T encontrarMaior() {
+		NoLista<T> p = primeiro;
+		T maior = p.getInfo();
+		while (p != null) {
+			if (comparator.compare(p.getInfo(), maior) > 0) {
+				maior = p.getInfo();
+			}
+			p = p.getProximo();
+		}
+		return maior;
 	}
 
 	/**
@@ -85,13 +119,13 @@ public class ListaEncadeada<T> implements Lista<T> {
 		return indice;
 	}
 
-	public ListaEncadeada<T> intercala(ListaEncadeada<T> outra){
+	public ListaEncadeada<T> intercala(ListaEncadeada<T> outra) {
 
 		ListaEncadeada<T> novaLista = new ListaEncadeada<>();
 		NoLista<T> no = this.primeiro;
 		NoLista<T> noOutra = outra.getPrimeiro();
 
-		//insere um a um
+		// insere um a um
 		while (no != null && noOutra != null) {
 			novaLista.inserir(no.getInfo());
 			novaLista.inserir(noOutra.getInfo());
@@ -101,14 +135,14 @@ public class ListaEncadeada<T> implements Lista<T> {
 
 		while (no != null) {
 			novaLista.inserir(no.getInfo());
-			no= no.getProximo();
+			no = no.getProximo();
 		}
 
 		while (noOutra != null) {
 			novaLista.inserir(noOutra.getInfo());
 			noOutra = noOutra.getProximo();
 		}
-		
+
 		return novaLista;
 
 	}
@@ -227,6 +261,11 @@ public class ListaEncadeada<T> implements Lista<T> {
 			no = no.getProximo();
 		}
 		return false;
+	}
+
+	@Override
+	public int compare(Integer o1, Integer o2) {
+		return o1.compareTo(o2);
 	}
 
 }

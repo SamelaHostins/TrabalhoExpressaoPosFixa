@@ -12,4 +12,6 @@ public interface Lista<T> {
 	boolean estaVazia();
 	Lista<T> dividir();
 	T pegar(int posicao);
+	String exibirAoContrario();
+	public T encontrarMaior();
 }

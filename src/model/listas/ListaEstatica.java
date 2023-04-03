@@ -103,4 +103,16 @@ public class ListaEstatica <T> implements Lista<T> {
 		return info[posicao];
 	}
 
+	@Override
+	public String exibirAoContrario() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'exibirAoContrario'");
+	}
+
+	@Override
+	public T encontrarMaior() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'encontrarMaior'");
+	}
+
 }
